@@ -1,2 +1,2 @@
 # setup-script
-Simple script to setup some tools 
+Simple bash script to setup nvim, lsd, batcat, pwntools, gdb pwndbg and some wallpapers. 
