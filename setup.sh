@@ -77,7 +77,7 @@ function nvim_install(){
 function wallpapers(){
   echo -e "$yellow[+]$end$gray Downloading wallpapers...$end"
   sleep 1
-  git clone https://github.com/owerdogan/wallpapers-for-kali /home/$user/Pictures
+  sudo -u $user git clone https://github.com/owerdogan/wallpapers-for-kali /home/$user/Pictures
   clear
 
   echo -e "\n$green[*]$end$gray Done! Saved wallpapers at /home/$user/Pictures$end\n"
