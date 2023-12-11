@@ -65,7 +65,7 @@ function nvim_install(){
   sleep 1
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
   mv Hack.zip /usr/share/fonts
-  7z x /usr/share/fonts/Hack.zip -o /usr/share/fonts/
+  7z x /usr/share/fonts/Hack.zip -o/usr/share/fonts/
   fc-cache -fv
 
 
