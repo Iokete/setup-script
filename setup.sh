@@ -47,7 +47,7 @@ function nvim_install(){
   7z x nvim-linux64.tar -o/opt/
   rm nvim-linux64.tar.gz
   rm nvim-linux64.tar
-  mv /opt/nvim-linux64 opt/nvim
+  mv /opt/nvim-linux64 /opt/nvim
   chmod +xr -R /opt/nvim
   insert=$(cat /home/$user/.zshrc | grep "export PATH" | head -n 1)
   if [ "insert" ]; then
