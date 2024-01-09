@@ -29,14 +29,15 @@ function ctrl_c(){
 function lsdbat_install(){
   echo -e "$yellow[+]$end$gray Installing lsd and batcat...$end"
   sleep 1
-  sudo apt install bat
-  sudo apt install lsd
+  sudo apt install -y bat
+  sudo apt install -y lsd
   sed -i '/alias cat="batcat"/d' /home/$user/.zshrc 2>/dev/null
   sed -i '/alias ls="lsd"/d' /home/$user/.zshrc 2>/dev/null
   echo 'alias cat="batcat"' >> /home/$user/.zshrc
   echo 'alias ls="lsd"' >> /home/$user/.zshrc
   clear
   echo -e "$green[*]$end$gray Done! added ls and cat alias to /home/$user/.zshrc  \n$end"
+  echo -e "$green[*]$end$gray Restart your terminal to see the changes. \n$end"
 }
 
 function nvim_install(){
@@ -90,7 +91,7 @@ function pwn_install(){
   echo -e "\n$yellow[+]$end$gray Setting up pwndbg and pwntools...$end"
   sleep 1 
 
-  sudo apt install python3-pwntools
+  sudo apt install -y python3-pwntools
 
   [ ! -d /home/$user/repos ] && mkdir /home/$user/repos/
 
