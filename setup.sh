@@ -51,7 +51,7 @@ function nvim_install(){
   mv /opt/nvim-linux64 /opt/nvim
   chmod +xr -R /opt/nvim
   insert=$(cat /home/$user/.zshrc | grep "export PATH" | head -n 1)
-  if [ "insert" ]; then
+  if [ -n "insert" ]; then
     sed -i '/"$insert"/d' /home/$user/.zshrc
     echo "$insert:/opt/nvim/bin" >> /home/$user/.zshrc
   else
@@ -140,6 +140,7 @@ then
     help_panel
   else
     sudo apt update
+    sudo apt install p7zip
     clear
     if [ "$nvim_flag" -eq 1 ]; then
       nvim_install
