@@ -52,10 +52,10 @@ function nvim_install(){
   chmod +xr -R /opt/nvim
   insert=$(cat /home/$user/.zshrc | grep "export PATH" | head -n 1)
   if [ -n "insert" ]; then
-    sed -i '/"$insert"/d' /home/$user/.zshrc
-    echo "$insert:/opt/nvim/bin" >> /home/$user/.zshrc
+        sed -i '/"$insert"/d' /home/$user/.zshrc
+        echo "export PATH=$(echo $PATH):/opt/nvim/bin" >> /home/$user/.zshrc
   else
-    echo "export PATH=$PATH:/opt/nvim/bin" >> /home/$user/.zshrc
+        echo "export PATH=$(echo $PATH):/opt/nvim/bin" >> /home/$user/.zshrc
   fi
   sudo -u $user git clone https://github.com/NvChad/NvChad /home/$user/.config/nvim --depth 1 
   clear
@@ -90,13 +90,14 @@ function wallpapers(){
 function pwn_install(){
   echo -e "\n$yellow[+]$end$gray Setting up pwndbg and pwntools...$end"
   sleep 1 
+  sudo apt install -y gdb
+  sudo apt-get install -y python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
+  sudo -u $user python3 -m pip install pwntools
 
-  sudo apt install -y python3-pwntools
+  [ ! -d /home/$user/repos ] && sudo -u $user mkdir /home/$user/repos/
 
-  [ ! -d /home/$user/repos ] && mkdir /home/$user/repos/
-
-  sudo -u $user git clone https://github.com/pwndbg/pwndbg /home/$user/repos/
-  sh /home/$user/repos/pwndbg/setup.sh
+  sudo -u $user git clone https://github.com/pwndbg/pwndbg /home/$user/repos/pwndbg
+  sudo -u $user sh /home/$user/repos/pwndbg/setup.sh
   clear
 
   echo -e "\n$green[*]$end$gray Done! GDB pwndbg and pwntools are now setup. $end\n"
@@ -140,6 +141,7 @@ then
     help_panel
   else
     sudo apt update
+    sudo apt-get update
     sudo apt install p7zip
     clear
     if [ "$nvim_flag" -eq 1 ]; then
